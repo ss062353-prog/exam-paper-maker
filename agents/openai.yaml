@@ -1,0 +1,3 @@
+interface:
+  display_name: "Exam Paper Maker"
+  short_description: "按章节与历年真题命制可打印的诊断试卷，自带校验与诊断表"

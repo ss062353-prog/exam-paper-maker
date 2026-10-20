@@ -1,0 +1,165 @@
+{
+  "schema_version": 2,
+  "out_pdf": "examples/sample-output.pdf",
+  "out_md": "examples/sample-output.md",
+  "date": "2026-10-20",
+  "title": "高等数学 第一章 诊断卷（示例）",
+  "subtitle": "覆盖 §1.1–1.8 中的五个小节｜满分 30 分｜示例卷，非正式考试",
+  "footer_left": "示例卷",
+  "footer_right": "30 分",
+  "info_line": "姓　名：____________　　得　分：__________",
+  "note": "<b>说明</b>：这是 exam-paper-maker 的 schema v2 示例，展示题目元数据、分数校验、数值复核、公式、插图与诊断表。",
+  "meta": {
+    "course": "高等数学",
+    "textbook": "同济《高等数学》第八版 上册",
+    "chapter": "第一章 函数与极限",
+    "duration_min": 45,
+    "total_points": 30,
+    "coverage": ["§1.1", "§1.5", "§1.6", "§1.7", "§1.8"],
+    "difficulty_target": {"basic": 12, "medium": 12, "challenge": 6},
+    "difficulty_tolerance": 0.5,
+    "level_bands": [
+      {"range": "27-30", "level": "第 5 层", "note": "概念、计算与证明都稳"},
+      {"range": "21-26", "level": "第 4 层", "note": "个别技巧需要补"},
+      {"range": "15-20", "level": "第 3 层", "note": "会算；证明与概念题需加强"},
+      {"range": "0-14", "level": "第 2 层", "note": "回补定义与基本性质"}
+    ],
+    "band_note": "注意：分档是启发式参考，不是标准化测量；真正的诊断需要题目难度与区分度数据。",
+    "error_types": [
+      ["知识缺口", "定义/定理没记住，或不知道适用条件"],
+      ["链条断裂", "多步推理中间断掉，后续靠猜"],
+      ["计算失误", "方法对，代数或符号算错"],
+      ["审题失误", "漏条件、看错对象或范围"],
+      ["表达不规范", "步骤缺失、结论句写不全、等号/箭头混用"]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "一、单项选择题（每小题 3 分，共 12 分）",
+      "items": [
+        {
+          "id": "A1", "kind": "choice", "points": 3, "difficulty": "basic", "topic": "§1.1", "time_min": 5,
+          "text": "1. 下列各组函数中表示同一函数的是（　　）",
+          "options": [
+            "A. f(x) = x，g(x) = (√x)<super>2</super>",
+            "B. f(x) = |x|，g(x) = √(x<super>2</super>)",
+            "C. f(x) = ln x<super>2</super>，g(x) = 2ln x",
+            "D. f(x) = x，g(x) = ln(e<super>x</super>)"
+          ],
+          "answer": "D",
+          "why": "ln(e<super>x</super>) = x 对一切实数成立；A、B、C 的定义域或对应法则不同。",
+          "rubric": [{"criterion": "概念判断", "points": 3}]
+        },
+        {
+          "id": "A2", "points": 3, "difficulty": "basic", "topic": "§1.7", "time_min": 5,
+          "text": "2. 当 x→0 时，与 x 等价的无穷小是（　　）",
+          "options": [
+            "A. sin x　　　B. 1 - cos x　　　C. x·sin x　　　D. √(1 + x) - 1"
+          ],
+          "answer": "A",
+          "why": "sin x ~ x；1 - cos x 是二阶；x·sin x 是二阶；√(1 + x) - 1 ~ x/2。",
+          "rubric": [{"criterion": "等价无穷小", "points": 3}]
+        },
+        {
+          "id": "A3", "points": 3, "difficulty": "basic", "topic": "§1.8", "time_min": 5,
+          "text": "3. 函数 f(x) = (x<super>2</super> - 1)/(x - 1) 在 x = 1 处的间断点类型是（　　）",
+          "options": [
+            "A. 可去间断点　　　B. 跳跃间断点　　　C. 无穷间断点　　　D. 振荡间断点"
+          ],
+          "answer": "A",
+          "why": "x ≠ 1 时 f(x) = x + 1 → 2，而在 x = 1 无定义，为可去间断点。",
+          "rubric": [{"criterion": "间断点分类", "points": 3}]
+        },
+        {
+          "id": "A4", "points": 3, "difficulty": "basic", "topic": "§1.5", "time_min": 5,
+          "text": "4. 计算 lim(x→1) (x<super>3</super> - 1)/(x<super>2</super> - 1)，结果为（　　）",
+          "options": ["A. 1　　　B. 3/2　　　C. 2　　　D. 不存在"],
+          "answer": "B",
+          "why": "因式分解：(x - 1)(x<super>2</super> + x + 1)/[(x - 1)(x + 1)] = (x<super>2</super> + x + 1)/(x + 1) → 3/2。",
+          "numeric_check": {"expr": "(x**3 - 1)/(x**2 - 1)", "at": [1.0001, 1.00001],
+                            "expected": 1.5, "rtol": 0.01},
+          "rubric": [{"criterion": "因式分解与极限", "points": 3}]
+        }
+      ]
+    },
+    {
+      "heading": "二、计算题（每小题 6 分，共 12 分）",
+      "page_break_before": true,
+      "items": [
+        {
+          "id": "B1", "kind": "calc", "points": 6, "difficulty": "medium", "topic": "§1.5", "time_min": 10,
+          "text": "1. 计算下列极限，并说明该函数在 x = 2 处的性态。",
+          "math": [
+            {"kind": "fraction", "apply": "lim(x→2)", "num": "x<super>2</super> - 4", "den": "x - 2", "suffix": "= ?"}
+          ],
+          "figures": [
+            {"path": "assets/limit-hole.png", "width_cm": 8.5, "caption": "图 1　f(x) = (x² - 4)/(x - 2) 在 x = 2 处有一个洞"}
+          ],
+          "answer": "4；在 x = 2 处无定义，但极限存在，为可去间断点。",
+          "why": "x ≠ 2 时 (x<super>2</super> - 4)/(x - 2) = x + 2 → 4。",
+          "numeric_check": {"expr": "(x**2 - 4)/(x - 2)", "at": [2.0001, 2.00001],
+                            "expected": 4.0, "rtol": 0.01},
+          "rubric": [
+            {"criterion": "因式分解或代入化简", "points": 3},
+            {"criterion": "求极限值", "points": 2},
+            {"criterion": "指出可去间断点", "points": 1}
+          ]
+        },
+        {
+          "id": "B2", "points": 6, "difficulty": "medium", "topic": "§1.6", "time_min": 8,
+          "text": "2. 计算 lim(x→∞) ((x + 1)/(x - 1))<super>x</super>。",
+          "answer": "e<super>2</super>",
+          "why": "底数写成 1 + 2/(x - 1)，指数 x 乘无穷小 2/(x - 1) 趋于 2，故极限为 e<super>2</super>。",
+          "numeric_check": {"expr": "((x + 1)/(x - 1))**x", "at": [1000, 10000],
+                            "expected": 7.389056, "rtol": 0.01},
+          "rubric": [
+            {"criterion": "凑重要极限形式", "points": 4},
+            {"criterion": "指数处理与结果", "points": 2}
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "三、证明题（6 分）",
+      "items": [
+        {
+          "id": "C1", "kind": "proof", "points": 6, "difficulty": "challenge", "topic": "§1.6", "time_min": 7,
+          "text": "用 ε-N 定义证明：lim(n→∞) (2n + 1)/(n + 1) = 2。",
+          "answer": "提示：|(2n + 1)/(n + 1) - 2| = 1/(n + 1) < ε，取 N 为 1/ε 向上取整。",
+          "why": "完整写法见答案：任给 ε > 0 → 作差化简 → 反解 → 取 N → 结论句。",
+          "proof_check": [
+            "前提逐条核对：极限过程是 n→∞，ε > 0 任意给定，N 必须是正整数",
+            "作差后化简到只含 n 的表达式",
+            "反解出 n 的不等式并取 N",
+            "结论句写全：当 n > N 时恒有 |·| < ε"
+          ],
+          "sources": [
+            {"title": "Limit of a sequence - Wikipedia", "url": "https://en.wikipedia.org/wiki/Limit_of_a_sequence",
+             "accessed": "2026-10-20", "used_for": "ε-N 定义",
+             "quote": "The modern definition of a limit"},
+            {"title": "2.5: The Precise Definition of a Limit - LibreTexts",
+             "url": "https://math.libretexts.org/Bookshelves/Calculus/Calculus_(OpenStax)/02%3A_Limits/2.05%3A_The_Precise_Definition_of_a_Limit",
+             "accessed": "2026-10-20", "used_for": "ε-δ 定义对照",
+             "quote": "The Precise Definition of a Limit"}
+          ],
+          "rubric": [
+            {"criterion": "任给 ε > 0", "points": 1},
+            {"criterion": "作差并化简", "points": 2},
+            {"criterion": "反解并取 N", "points": 2},
+            {"criterion": "结论句", "points": 1}
+          ]
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "title": "答案与评分标准",
+    "subtitle": "答案由题目元数据自动生成；给分点来自每题的 rubric。",
+    "auto": true
+  },
+  "verify": {
+    "pages": {"1": ["诊断卷（示例）", "一、单项选择题"], "3": ["答案与评分标准"]},
+    "must_contain": ["可去间断点", "e", "双向细目表", "自诊断记录表", "命题依据与核验记录"],
+    "must_not_contain": ["( 1, 0)"]
+  }
+}
